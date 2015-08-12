@@ -1,0 +1,19 @@
+{
+  "name": "stand-alone-templates",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "fs": "0.0.2",
+    "glob": "^5.0.14",
+    "handlebars": "^3.0.3",
+    "html-minifier": "^0.7.2",
+    "mkdirp": "^0.5.1",
+    "uglify-js": "^2.4.24"
+  }
+}

@@ -1,0 +1,209 @@
+<div id="rc-app" class="rc-app rc-app-reset">
+	<form name="rcAppForm" method="POST" target="_blank" onsubmit="return rcApp.validateForm()">
+		<input type="hidden" name="affiliateCode">
+		<input type="hidden" name="preflang">
+		<input type="hidden" name="prefcurrency">
+		<input type="hidden" name="adcamp">
+		<input type="hidden" name="adplat">
+		<input type="hidden" name="enabler">
+		<input type="hidden" name="cor">
+		<input type="hidden" name="puSameAsDo" value="false">
+		<input type="hidden" name="emptySearchResults" value="true">
+		<input type="hidden" name="locationName">
+		<input type="hidden" name="dropLocationName">
+		<h3>{{title}}</h3>
+		<div class="rc-locations-wrap" id="rc-locations-wrap">
+			<div class="rc-form-group-wrap rc-form-group-wrap--locations rc-form-group-wrap--pickup">
+				<div class="rc-form-group rc-form-group--country">
+					<div class="rc-form-control rc-form-control--country rc-select-wrap">
+						<i class="rc-icon rc-icon-chevron-down"></i>
+						<select name="country" onfocus="rcApp.setFocus(this)" onblur="rcApp.unsetFocus(this)" onchange="rcApp.localeChanged(this)">
+							<option selected="selected" disabled="disabled" value="0">{{country}}</option>
+							{{#each countries}}
+								<option value="{{id}}">{{name}}</option>
+							{{/each}}
+						</select>
+						<span>{{country}}</span>
+					</div>
+				</div>
+				<div class="rc-form-group rc-form-group--city">
+					<div class="rc-select-wrap rc-form-control rc-form-control--city rc-form-control--is-disabled">
+						<i class="rc-icon rc-icon-chevron-down"></i>
+						<select disabled="disabled" name="city" onfocus="rcApp.setFocus(this)" onblur="rcApp.unsetFocus(this)" onchange="rcApp.localeChanged(this)">
+							<option selected="selected" disabled="disabled" value="0">{{city}}</option>
+						</select>
+						<span>{{city}}</span>
+					</div>
+				</div>
+				<div class="rc-form-group rc-form-group--location">
+					<div class="rc-select-wrap rc-form-control rc-form-control--location rc-form-control--is-disabled">
+						<i class="rc-icon rc-icon-chevron-down"></i>
+						<select disabled="disabled" name="location" onfocus="rcApp.setFocus(this)" onblur="rcApp.unsetFocus(this)" onchange="rcApp.localeChanged(this)">
+							<option selected="selected" disabled="disabled" value="0">{{location}}</option>
+						</select>
+						<span>{{location}}</span>
+					</div>
+				</div>
+			</div>
+			<div class="rc-form-group-wrap rc-form-group-wrap--locations rc-form-group-wrap--dropoff">
+				<h4>{{dropOff}}</h4>
+				<div class="rc-form-group rc-form-group--drop-country">
+					<div class="rc-select-wrap rc-form-control rc-form-control--country rc-form-control--is-disabled">
+						<i class="rc-icon rc-icon-chevron-down"></i>
+						<select disabled="disabled" name="dropCountry" onfocus="rcApp.setFocus(this)" onblur="rcApp.unsetFocus(this)" onchange="rcApp.localeChanged(this)">
+							<option selected="selected" disabled="disabled" value="0">{{country}}</option>
+						</select>
+						<span>{{country}}</span>
+					</div>
+				</div>
+				<div class="rc-form-group rc-form-group--drop-country">
+					<div class="rc-select-wrap rc-form-control rc-form-control--city rc-form-control--is-disabled">
+						<i class="rc-icon rc-icon-chevron-down"></i>
+						<select disabled="disabled" name="dropCity" onfocus="rcApp.setFocus(this)" onblur="rcApp.unsetFocus(this)" onchange="rcApp.localeChanged(this)">
+							<option selected="selected" disabled="disabled" value="0">{{city}}</option>
+						</select>
+						<span>{{city}}</span>
+					</div>
+				</div>
+				<div class="rc-form-group rc-form-group--drop-country">
+					<div class="rc-select-wrap rc-form-control rc-form-control--location rc-form-control--is-disabled">
+						<i class="rc-icon rc-icon-chevron-down"></i>
+						<select disabled="disabled" name="dropLocation" onfocus="rcApp.setFocus(this)" onblur="rcApp.unsetFocus(this)" onchange="rcApp.dropLocationChanged()">
+							<option selected="selected" disabled="disabled" value="0">{{location}}</option>
+						</select>
+						<span>{{location}}</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rc-form-group rc-form-group--return">
+			<label><input type="checkbox" checked="checked" onchange="rcApp.returnChanged(this)">{{returnSameLocation}}</label>
+		</div>
+		<div class="rc-form-group rc-form-group--date rc-date--pickup">
+			<label>{{pickUpDate}}</label>
+			<div class="rc-input-wrap">
+				<i class="rc-icon rc-icon-calendar" onclick="rcApp.clickThrough(this)"></i>
+				<input class="rc-form-control rc-form-control--date" readonly="readonly" spellcheck="false" type="text" name="" id="rc-datepicker--pickup">
+				<input type="hidden" name="puDay">
+				<input type="hidden" name="puMonth">
+				<input type="hidden" name="puYear">
+			</div>
+		</div>
+		<div class="rc-form-group rc-form-group--time rc-time--pickup">
+			<label>{{time}}</label>
+			<div class="rc-form-control-wrap rc-form-control-wrap--time">
+				<div class="rc-select-wrap rc-form-control rc-form-control--hour">
+					<i class="rc-icon rc-icon-chevron-down"></i>
+					<select name="puHour" onfocus="rcApp.setFocus(this)" onblur="rcApp.unsetFocus(this)" onchange="rcApp.timeChanged(this)">
+						<option value="00">00</option>
+						<option value="01">01</option>
+						<option value="02">02</option>
+						<option value="03">03</option>
+						<option value="04">04</option>
+						<option value="05">05</option>
+						<option value="06">06</option>
+						<option value="07">07</option>
+						<option value="08">08</option>
+						<option value="09">09</option>
+						<option value="10" selected="selected">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+					</select>
+					<span>10</span>
+				</div>
+				<div class="rc-select-wrap rc-form-control rc-form-control--minute">
+					<i class="rc-icon rc-icon-chevron-down"></i>
+					<select name="puMinute" onfocus="rcApp.setFocus(this)" onblur="rcApp.unsetFocus(this)" onchange="rcApp.timeChanged(this)">
+						<option value="00">00</option>
+						<option value="15">15</option>
+						<option value="30" selected="selected">30</option>
+						<option value="45">45</option>
+					</select>
+					<span>30</span>
+				</div>
+			</div>
+		</div>
+		<div class="rc-form-group rc-form-group--date rc-date--dropoff">
+			<label>{{dropOffDate}}</label>
+			<div class="rc-input-wrap">
+				<i class="rc-icon rc-icon-calendar" onclick="rcApp.clickThrough(this)"></i>
+				<input class="rc-form-control rc-form-control--date" readonly="readonly" spellcheck="false" type="text" name="" id="rc-datepicker--dropoff">
+				<input type="hidden" name="doDay">
+				<input type="hidden" name="doMonth">
+				<input type="hidden" name="doYear">
+			</div>
+		</div>
+		<div class="rc-form-group rc-form-group--time rc-time--pickup">
+			<label>{{time}}</label>
+			<div class="rc-form-control-wrap rc-form-control-wrap--time">
+				<div class="rc-select-wrap rc-form-control rc-form-control--hour">
+					<i class="rc-icon rc-icon-chevron-down"></i>
+					<select name="doHour" onfocus="rcApp.setFocus(this)" onblur="rcApp.unsetFocus(this)" onchange="rcApp.timeChanged(this)">
+						<option value="00">00</option>
+						<option value="01">01</option>
+						<option value="02">02</option>
+						<option value="03">03</option>
+						<option value="04">04</option>
+						<option value="05">05</option>
+						<option value="06">06</option>
+						<option value="07">07</option>
+						<option value="08">08</option>
+						<option value="09">09</option>
+						<option value="10" selected="selected">10</option>
+						<option value="11">11</option>
+						<option value="12">12</option>
+						<option value="13">13</option>
+						<option value="14">14</option>
+						<option value="15">15</option>
+						<option value="16">16</option>
+						<option value="17">17</option>
+						<option value="18">18</option>
+						<option value="19">19</option>
+						<option value="20">20</option>
+						<option value="21">21</option>
+						<option value="22">22</option>
+						<option value="23">23</option>
+					</select>
+					<span>10</span>
+				</div>
+				<div class="rc-select-wrap rc-form-control rc-form-control--minute">
+					<i class="rc-icon rc-icon-chevron-down"></i>
+					<select name="doMinute" onfocus="rcApp.setFocus(this)" onblur="rcApp.unsetFocus(this)" onchange="rcApp.timeChanged(this)">
+						<option value="00">00</option>
+						<option value="15">15</option>
+						<option value="30" selected="selected">30</option>
+						<option value="45">45</option>
+					</select>
+					<span>30</span>
+				</div>
+			</div>
+		</div>
+		<div class="rc-form-group rc-form-group--age">
+			<label>{{driverAge}}</label>
+			<input class="rc-form-control rc-form-control--age" value="25" onkeypress="rcApp.validateNumber(event)" type="text" name="driversAge">
+		</div>
+		<div class="rc-form-group rc-form-group--submit">
+			<button class="rc-button">{{search}}</button>
+		</div>
+	</form>
+	<div id="rc-modal-overlay" onclick="rcApp.dismissModal()" class="rc-modal-overlay rc-modal-overlay--hidden">
+		<div class="rc-modal">
+			<div class="rc-modal-header">
+				<span>{{sorry}}</span>
+				<div onclick="rcApp.dismissModal()" class="rc-modal-close">×</div>
+			</div>
+			<div id="rc-modal-body" class="rc-modal-body"></div>
+		</div>
+	</div>
+</div>
